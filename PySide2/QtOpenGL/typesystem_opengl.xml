@@ -20,6 +20,7 @@
 -->
 <typesystem package="PySide2.QtOpenGL">
   <load-typesystem name="typesystem_gui.xml" generate="no" />
+  <load-typesystem name="typesystem_widgets.xml" generate="no" />
 
   <primitive-type name="GLbitfield"/>
   <primitive-type name="GLboolean"/>
@@ -85,14 +86,8 @@
         <include file-name="QImage" location="global"/>
         <include file-name="QPixmap" location="global"/>
     </extra-includes>
-    <modify-function signature="QGLWidget(QGLContext*, QWidget*, const QGLWidget*, QFlags&lt;Qt::WindowType&gt;)">
-      <modify-argument index="1">
-        <parent index="this" action="add"/>
-      </modify-argument>
-      <modify-argument index="this">
-        <parent index="2" action="add"/>
-      </modify-argument>
-    </modify-function>
+    <!-- Obsolete since Qt5 -->
+    <modify-function signature="QGLWidget(QGLContext*, QWidget*, const QGLWidget*, QFlags&lt;Qt::WindowType&gt;)" remove="all">
     <!-- ### Not part of Qt public API -->
     <modify-function signature="setContext(QGLContext*,const QGLContext*,bool)" remove="all" />
     <!-- ### -->
